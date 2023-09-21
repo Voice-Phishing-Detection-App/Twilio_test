@@ -1,0 +1,1 @@
+INSERT INTO "user" (phone_number, fcm_token) VALUES ('01000000000', 'FCM_TOKEN');

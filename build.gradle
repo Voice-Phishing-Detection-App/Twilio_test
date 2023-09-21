@@ -34,6 +34,9 @@ dependencies {
     compileOnly group: "com.twilio.sdk", name: "twilio", version: "8.0.+"
     compileOnly group: "com.sparkjava", name: "spark-core", version: "2.7.1"
     //compileOnly group: "org.slf4j", name: "slf4j-simple", version: "1.7.21"
+
+    // fcm
+    implementation group: 'com.google.firebase', name: 'firebase-admin', version: '6.8.1'
 }
 
 tasks.named('test') {
