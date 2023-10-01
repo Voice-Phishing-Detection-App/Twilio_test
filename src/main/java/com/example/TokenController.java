@@ -23,11 +23,13 @@ public class TokenController {
     @Value("${outgoingApplicationSid}")
     private String outgoingApplicationSid;
 
+
     @PostMapping("/token")
     public ResponseEntity<String> generateToken(@RequestBody Map<String, Object> payload) {
         try {
             // 클라이언트 식별자 가져오기 (페이로드에서 제공되어야 함)
-            String identity = (String) payload.get("identity");
+            String fcmToken = (String) payload.get("fcmToken");
+            System.out.println("fcmToken = " + fcmToken);
 
             // 음성 권한 부여
             VoiceGrant grant = new VoiceGrant();
@@ -35,7 +37,7 @@ public class TokenController {
 
             // 액세스 토큰 만들기
             AccessToken token = new AccessToken.Builder(TWILIO_ACCOUNT_SID, TWILIO_API_KEY, TWILIO_API_SECRET)
-                    .identity(identity)
+                    .identity(fcmToken)
                     .grant(grant)
                     .build();
 
